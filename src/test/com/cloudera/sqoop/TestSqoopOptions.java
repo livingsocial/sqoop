@@ -263,14 +263,6 @@ public class TestSqoopOptions extends TestCase {
     out.setHiveImport(true);
     out.setFetchSize(null);
 
-    Properties connParams = new Properties();
-    connParams.put("conn.timeout", "3000");
-    connParams.put("conn.buffer_size", "256");
-    connParams.put("conn.dummy", "dummy");
-    connParams.put("conn.foo", "bar");
-
-    out.setConnectionParams(connParams);
-
     Properties outProps = out.writeProperties();
 
     SqoopOptions in = new SqoopOptions();
@@ -279,11 +271,6 @@ public class TestSqoopOptions extends TestCase {
     Properties inProps = in.writeProperties();
 
     assertEquals("properties don't match", outProps, inProps);
-
-    assertEquals("connection params don't match",
-            connParams, out.getConnectionParams());
-    assertEquals("connection params don't match",
-            connParams, in.getConnectionParams());
   }
 
   public void testPropertySerialization2() {
@@ -303,15 +290,6 @@ public class TestSqoopOptions extends TestCase {
     out.setHiveImport(true);
     out.setFetchSize(42);
 
-    Properties connParams = new Properties();
-    connParams.setProperty("a", "value-a");
-    connParams.setProperty("b", "value-b");
-    connParams.setProperty("a.b", "value-a.b");
-    connParams.setProperty("a.b.c", "value-a.b.c");
-    connParams.setProperty("aaaaaaaaaa.bbbbbbb.cccccccc", "value-abc");
-
-    out.setConnectionParams(connParams);
-
     Properties outProps = out.writeProperties();
 
     SqoopOptions in = new SqoopOptions();
@@ -320,10 +298,6 @@ public class TestSqoopOptions extends TestCase {
     Properties inProps = in.writeProperties();
 
     assertEquals("properties don't match", outProps, inProps);
-    assertEquals("connection params don't match",
-            connParams, out.getConnectionParams());
-    assertEquals("connection params don't match",
-            connParams, in.getConnectionParams());
   }
 
 }
