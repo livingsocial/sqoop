@@ -33,7 +33,8 @@ public final class FieldFormatter {
    */
   public static String hiveStringDropDelims(String str,
       DelimiterSet delimiters) {
-    String droppedDelims = str.replaceAll("\\n|\\r|\01", "");
+      // use a space instead of getting rid of any delimiter
+    String droppedDelims = str.replaceAll("\\n|\\r|\01", " ");
     return escapeAndEnclose(droppedDelims, delimiters);
   }
 
