@@ -18,7 +18,6 @@
 .project
 .launches
 .settings
-.ant-targets-build.xml
 /tags
 /build.properties
 /conf/managers.d
