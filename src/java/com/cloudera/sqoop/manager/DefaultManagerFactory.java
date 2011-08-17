@@ -35,7 +35,6 @@ public final class DefaultManagerFactory extends ManagerFactory {
   public static final Log LOG = LogFactory.getLog(
       DefaultManagerFactory.class.getName());
 
-  @Override
   public ConnManager accept(JobData data) {
     SqoopOptions options = data.getSqoopOptions();
     String manualDriver = options.getDriverClassName();
@@ -117,8 +116,6 @@ public final class DefaultManagerFactory extends ManagerFactory {
       return new HsqldbManager(options);
     } else if (scheme.startsWith("jdbc:oracle:")) {
       return new OracleManager(options);
-    } else if (scheme.startsWith("jdbc:sqlserver:")) {
-      return new SQLServerManager(options);
     } else {
       return null;
     }
