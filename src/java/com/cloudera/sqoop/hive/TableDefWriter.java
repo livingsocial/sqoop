@@ -177,7 +177,13 @@ public class TableDefWriter {
     sb.append(getHiveOctalCharCode((int) options.getOutputFieldDelim()));
     sb.append("' LINES TERMINATED BY '");
     sb.append(getHiveOctalCharCode((int) options.getOutputRecordDelim()));
-    sb.append("' STORED AS TEXTFILE");
+    String codec = options.getCompressionCodec();
+    if (codec != null && codec.toLowerCase().contains("lzo")) {
+      sb.append("' STORED AS INPUTFORMAT 'com.hadoop.mapred.DeprecatedLzoTextInputFormat'");
+      sb.append(" OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'");
+    } else {
+      sb.append("' STORED AS TEXTFILE");
+    }
 
     LOG.debug("Create statement: " + sb.toString());
     return sb.toString();
