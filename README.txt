@@ -1,21 +1,46 @@
-# Sqoop has moved to Apache!
 
-The Sqoop team is pleased to announce that Sqoop has been migrated
-to Apache Software Foundation and is currently undergoing incubation.
+= Welcome to Sqoop!
 
-All the sources have been migrated to Apache Subversion and can be
-accessed from there, including relevant history of individual sources.
-If you are interested in a past release of Sqoop, you can clone this
-repository and go back to the specific release tag.
+This is the Sqoop (SQL-to-Hadoop) tool. Sqoop allows easy imports and
+exports of data sets between databases and HDFS.
 
-***
-# Apache Sqoop
 
-Please read the [transition notes](https://cwiki.apache.org/confluence/display/SQOOP/Transition+from+Cloudera) 
-for important information regarding the transition of Sqoop to Apache Software Foundation.
+== More Documentation
 
-* [Project Status](http://incubator.apache.org/projects/sqoop.html)
-* [Sqoop Wiki](https://cwiki.apache.org/confluence/display/SQOOP/Home)
-* [Source Repository](https://svn.apache.org/repos/asf/incubator/sqoop/trunk/)
-* [Issue Tracking System](https://issues.apache.org/jira/browse/SQOOP)
-* [New Mailing Lists](https://cwiki.apache.org/confluence/display/SQOOP/Mailing+Lists)
+Sqoop ships with additional documentation: a user guide and a manual page.
+
+Asciidoc sources for both of these are in +src/docs/+. Run +ant docs+ to build
+the documentation. It will be created in +build/docs/+.
+
+If you got Sqoop in release form, documentation will already be built and
+available in the +docs/+ directory.
+
+
+== Compiling Sqoop
+
+Compiling Sqoop requires the following tools:
+
+* Apache ant (1.7.1)
+* Java JDK 1.6
+
+Additionally, building the documentation requires these tools:
+
+* asciidoc
+* make
+* python 2.5+
+* xmlto
+* tar
+* gzip
+
+To compile Sqoop, run +ant package+. There will be a fully self-hosted build
+provided in the +build/sqoop-(version)/+ directory. 
+
+You can build just the jar by running +ant jar+.
+
+See the COMPILING.txt document for for information.
+
+== This is also an Asciidoc file!
+
+* Try running +asciidoc README.txt+
+* For more information about asciidoc, see http://www.methods.co.nz/asciidoc/
+
