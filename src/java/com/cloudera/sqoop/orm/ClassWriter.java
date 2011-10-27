@@ -866,13 +866,13 @@ public class ClassWriter {
   private void parseNullVal(String javaType, String colName, StringBuilder sb) {
     if (javaType.equals("String")) {
       sb.append("    if (__cur_str.equals(\""
-         + this.options.getInNullStringValue() + "\") || __cur_str.equals(\"\\003\")) { this.");
+         + this.options.getInNullStringValue() + "\")) { this.");
       sb.append(colName);
       sb.append(" = null; } else {\n");
     } else {
       sb.append("    if (__cur_str.equals(\""
          + this.options.getInNullNonStringValue());
-      sb.append("\") || __cur_str.length() == 0) { this.");
+      sb.append("\") || __cur_str.length() == 0 || __cur_str.equals(\"\\\\N\")) { this.");
       sb.append(colName);
       sb.append(" = null; } else {\n");
     }
