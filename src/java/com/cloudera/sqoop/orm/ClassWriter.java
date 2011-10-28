@@ -866,7 +866,7 @@ public class ClassWriter {
   private void parseNullVal(String javaType, String colName, StringBuilder sb) {
     if (javaType.equals("String")) {
       sb.append("    if (__cur_str.equals(\""
-         + this.options.getInNullStringValue() + "\")) { this.");
+         + this.options.getInNullStringValue() + "\") || __cur_str.equals(\"\\\\N\")) { this.");
       sb.append(colName);
       sb.append(" = null; } else {\n");
     } else {
